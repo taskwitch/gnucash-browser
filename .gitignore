@@ -1,0 +1,6 @@
+node_modules
+dist
+
+# Never commit real financial data. The parser fixtures are the only exception.
+*.gnucash
+!src/lib/gnucash/__fixtures__/
