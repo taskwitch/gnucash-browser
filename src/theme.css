@@ -1,0 +1,53 @@
+:root {
+  --ink: #1a1a1a;
+  --ink-muted: #5a5648;
+  --paper: #f4f2ec;
+  --panel: #e8e6df;
+  --navy: #1f3a5f;
+  --navy-dark: #16294a;
+  --green: #2e5d3a;
+  --red: #8b2e2e;
+  --rule: #b8b4a6;
+  --bevel-light: #ffffff;
+  --bevel-dark: #9a968a;
+  --selection: #d6dfec;
+
+  /* Chart series colors, validated for CVD separation on --paper.
+     Darker than these fails colorblind-separation checks; don't darken. */
+  --chart-income: #478f5b;
+  --chart-expense: #3568a8;
+
+  --font-header: Georgia, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-numbers: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* Inputs under 16px trigger focus zoom on iOS — never go below. */
+input {
+  font-size: 16px;
+}

@@ -1,0 +1,566 @@
+/* GnuCash Browser — old-school banking look: beveled panels, ruled ledger
+   tables, serif headers, tabular numerals. No gradients, no radius, no motion. */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.app-splash {
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+}
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 2px solid var(--navy-dark);
+}
+
+.app-header-title {
+  font-family: var(--font-header);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.app-header-sub {
+  display: block;
+  font-size: 11px;
+  color: #c8d2e0;
+}
+
+.app-header-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ---------- buttons ---------- */
+
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.button:active {
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+}
+
+.button-small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.button-primary {
+  font-weight: bold;
+}
+
+.button:focus-visible,
+.tab:focus-visible,
+.account-name:focus-visible,
+.disclosure:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 1px;
+}
+
+/* ---------- banners ---------- */
+
+.banner {
+  padding: 8px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.banner-info {
+  background: #e4ebf5;
+}
+
+.banner-error {
+  background: #f5e4e4;
+  color: var(--red);
+}
+
+.banner-dismiss {
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  font-size: 11px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+/* ---------- panels ---------- */
+
+.panel {
+  background: var(--paper);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
+  margin-bottom: 12px;
+}
+
+.panel-heading {
+  font-family: var(--font-header);
+  font-weight: bold;
+  color: var(--navy);
+  background: var(--panel);
+  border-bottom: 1px solid var(--rule);
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.panel-body {
+  padding: 10px;
+}
+
+/* ---------- ledger tables ---------- */
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ledger-table th {
+  font-family: var(--font-header);
+  font-size: 12px;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 2px solid var(--rule);
+  background: var(--paper);
+}
+
+.ledger-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.col-amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.col-date {
+  white-space: nowrap;
+}
+
+.col-reconciled {
+  width: 2em;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.memo {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.empty-cell {
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.amount {
+  font-family: var(--font-numbers);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.amount.negative {
+  color: var(--red);
+}
+
+.commodity-code {
+  font-size: 10px;
+  color: var(--ink-muted);
+  margin-left: 4px;
+  text-transform: uppercase;
+}
+
+.footnote {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: -6px 2px 12px;
+}
+
+/* ---------- file loader ---------- */
+
+.file-loader {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.file-loader-panel {
+  max-width: 420px;
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+}
+
+.app-title {
+  font-family: var(--font-header);
+  color: var(--navy);
+  font-size: 26px;
+  margin: 0 0 4px;
+}
+
+.file-loader-lead {
+  color: var(--ink-muted);
+  margin: 0 0 20px;
+}
+
+.file-loader-button {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+.file-loader-status {
+  padding: 12px 0;
+  color: var(--ink-muted);
+}
+
+.privacy-note {
+  margin: 20px 0 0;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.error-box {
+  margin: 16px 0 0;
+  padding: 10px;
+  background: #f5e4e4;
+  border: 1px solid var(--red);
+  color: var(--red);
+  font-size: 13px;
+  text-align: left;
+}
+
+/* ---------- account tree ---------- */
+
+.account-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  min-height: 32px;
+}
+
+.account-header-row {
+  border-bottom: 2px solid var(--rule);
+  font-family: var(--font-header);
+  font-size: 12px;
+  font-variant: small-caps;
+  color: var(--navy);
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.account-name-header,
+.account-balance-header {
+  padding: 0 8px;
+}
+
+.disclosure,
+.disclosure-spacer {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disclosure {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--navy);
+  touch-action: manipulation;
+}
+
+.account-name {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--navy-dark);
+  cursor: pointer;
+  touch-action: manipulation;
+  min-height: 32px;
+}
+
+.account-name:active {
+  background: var(--selection);
+}
+
+.badge {
+  font-size: 9px;
+  color: var(--ink-muted);
+  border: 1px solid var(--rule);
+  padding: 0 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.account-balance {
+  padding: 0 8px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.mixed-marker {
+  color: var(--ink-muted);
+  margin-left: 2px;
+  cursor: help;
+}
+
+/* ---------- register ---------- */
+
+.register {
+  display: flex;
+  flex-direction: column;
+  /* Fill the main area so only the table scrolls. */
+  max-height: calc(100dvh - 170px);
+}
+
+.register-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.register-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.back-button {
+  flex-shrink: 0;
+}
+
+.register-search {
+  width: 140px;
+  padding: 4px 6px;
+  border: 1px solid var(--bevel-dark);
+  background: #fff;
+}
+
+.register-scroll {
+  overflow-y: auto;
+}
+
+.register-scroll thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ---------- dashboard ---------- */
+
+.stat-panels {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stat-panel {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 12px;
+}
+
+.stat-label {
+  font-family: var(--font-header);
+  font-size: 12px;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 18px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+/* ---------- charts ---------- */
+
+.chart {
+  margin: 0;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-grid {
+  stroke: var(--rule);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.chart-axis {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.chart-tick {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--ink-muted);
+}
+
+.chart-value-label {
+  font-family: var(--font-numbers);
+  font-size: 11px;
+  fill: var(--ink);
+}
+
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  padding: 4px 0 0 64px;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--ink);
+}
+
+.chart-empty {
+  color: var(--ink-muted);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.chart-data {
+  margin-top: 10px;
+}
+
+.chart-data td,
+.chart-data th {
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+/* ---------- tab bar ---------- */
+
+.tab-bar {
+  display: flex;
+  background: var(--panel);
+  border-top: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark);
+  padding: 4px 4px calc(4px + env(safe-area-inset-bottom));
+}
+
+.tab {
+  flex: 1;
+  min-height: 48px;
+  background: var(--panel);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
+  font-family: var(--font-header);
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  margin: 0 2px;
+  touch-action: manipulation;
+}
+
+.tab-active {
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  background: var(--paper);
+  color: var(--navy);
+  font-weight: bold;
+}
+
+/* ---------- touch & small screens ---------- */
+
+@media (pointer: coarse) {
+  .account-row,
+  .account-name {
+    min-height: 40px;
+  }
+
+  .ledger-table td {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header-title {
+    font-size: 15px;
+  }
+
+  .app-header-sub {
+    display: none;
+  }
+
+  .register-search {
+    width: 100px;
+  }
+
+  .col-reconciled {
+    display: none;
+  }
+}

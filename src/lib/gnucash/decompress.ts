@@ -8,8 +8,21 @@ export class NotGnuCashFileError extends Error {}
  * by magic bytes rather than trusting the file name.
  */
 export async function readGnuCashFile(file: Blob, fileName: string): Promise<string> {
-  const bytes = new Uint8Array(await file.arrayBuffer())
+  const bytes = await blobToBytes(file)
   return decodeGnuCashBytes(bytes, fileName)
+}
+
+/** Blob.arrayBuffer with a FileReader fallback for older WebKit. */
+function blobToBytes(blob: Blob): Promise<Uint8Array> {
+  if (typeof blob.arrayBuffer === 'function') {
+    return blob.arrayBuffer().then((buf) => new Uint8Array(buf))
+  }
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer))
+    reader.onerror = () => reject(reader.error ?? new Error('Could not read the file'))
+    reader.readAsArrayBuffer(blob)
+  })
 }
 
 export function decodeGnuCashBytes(bytes: Uint8Array, fileName = 'the selected file'): string {
