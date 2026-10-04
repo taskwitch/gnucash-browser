@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "fflate": "^0.8.3",
     "pako": "^2.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

@@ -61,7 +61,7 @@ describe('App smoke test', () => {
   it('shows the upload gate when no book is stored', async () => {
     const el = await renderApp()
     expect(el.textContent).toContain('GnuCash Browser')
-    expect(el.textContent).toContain('Open .gnucash file')
+    expect(el.textContent).toContain('Open GnuCash file')
   })
 
   it('parses an uploaded file and shows the account tree', async () => {

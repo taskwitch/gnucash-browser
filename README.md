@@ -8,7 +8,7 @@ A personal, single-user, mobile-friendly web app for viewing your [GnuCash](http
 
 You upload your GnuCash XML file (`.gnucash`), it's decompressed and parsed entirely in your browser, and the result is stored locally. Your financial data never leaves the device.
 
-- **Input** — GnuCash native XML (gzip-compressed `.gnucash`). SQLite-format files are rejected with instructions to re-export as XML.
+- **Input** — GnuCash native XML (gzip-compressed `.gnucash`), detected by content rather than file name. On iPadOS, where the Files picker won't always let you select a `.gnucash`, upload it zipped, gzipped, or renamed to `.txt` — all are accepted. SQLite-format files are rejected with instructions to re-export as XML.
 - **Storage** — IndexedDB holds the parsed book. No server, no database, no account.
 - **Privacy** — fully static site, no analytics or tracking of file contents.
 
